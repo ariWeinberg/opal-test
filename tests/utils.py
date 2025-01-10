@@ -60,7 +60,7 @@ def build_docker_image(docker_file: str, image_name: str, session_matrix: dict):
         if "tests" in os.path.abspath(__file__):
             logger.info(f"Right now the file is {os.path.abspath(__file__)}")
             context_path = os.path.abspath(
-                os.path.join(os.path.dirname(__file__), "..", "..", "opal")
+                os.path.join(os.path.dirname(__file__), "..", "..", "opal-test")
             )
         else:
             context_path = ".."
@@ -85,7 +85,7 @@ def build_docker_image(docker_file: str, image_name: str, session_matrix: dict):
             for log in logs:
                 logger.debug(log.get("stream", "").strip())
         except Exception as e:
-            raise RuntimeError(f"Failed to build Docker image: {e}")
+            raise RuntimeError(f"Failed to build Docker image: {e} | {context_path} | {dockerfile_path} | {image_name}")
 
         logger.debug(f"Docker image '{image_name}' built successfully.")
 

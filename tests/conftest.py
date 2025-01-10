@@ -467,7 +467,7 @@ def wait_sometime():
     environment in which the code is being executed.
     """
 
-    if True:#os.getenv("GITHUB_ACTIONS") == "true":
+    if os.getenv("GITHUB_ACTIONS") == "true":
         print("Running inside GitHub Actions. Sleeping for 30 seconds...")
         time.sleep(30)  # Sleep for 30 seconds
     else:
